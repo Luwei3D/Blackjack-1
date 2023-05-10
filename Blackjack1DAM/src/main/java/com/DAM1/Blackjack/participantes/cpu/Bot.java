@@ -2,9 +2,8 @@ package com.DAM1.Blackjack.participantes.cpu;
 
 import com.DAM1.Blackjack.participantes.Participante;
 
-public class Banco extends Participante implements Estrategico{
-
-    public Banco(String nombre) {
+public class Bot extends Participante implements Estrategico{
+    public Bot(String nombre) {
         super(nombre);
     }
 

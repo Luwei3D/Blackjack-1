@@ -1,4 +1,5 @@
 package com.DAM1.Blackjack.cartas;
 
-public class Treboles {
+public class Mazo {
+    
 }

@@ -1,22 +1,38 @@
 package com.DAM1.Blackjack.cartas;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class Baraja {
-    private HashMap<Carta,Integer> cartas;
-    /*
-    String[] cartas = {"Corazones","Diamantes","Treboles","Picas"};
-    for (String carta: cartas) {
-        for (int i = 0; i < 13; i++) {
-            if (i >= 2 && i <= 10) {
-                //Crear carta con el numero y el tipo de carta;
-            } else if (i == 1) {
-                //Crear la carta A y su valor
-            } else {
-                //Crear la carta con la las letras J,Q,K y su valor que es 10;
-            }
-        }
+    private static final int MAX_BARAJA = 52;
+    private static final int MAX_CARTAS = 13;
+    private final Carta[] cartas;
+
+    public Baraja() {
+        cartas = new Carta[MAX_BARAJA];
+        this.anyadirCartas();
     }
-     */
+
+    private void anyadirCartas() {
+        int k = 0;
+        String[] tipoCartas = {"Corazones","Treboles","Picas","Diamantes"};
+        do {
+            for (int i = 0; i < tipoCartas.length; i++) {
+                for (int j = 0; j < MAX_CARTAS; j++) {
+                    switch(tipoCartas[i]) {
+                        case "Corazones": 
+                            cartas[k] = new Carta(j++, "Corazones");
+                            break;
+                        case "Treboles":
+                            cartas[k] = new Carta(j++, "Treboles");
+                            break;
+                        case "Picas": 
+                            cartas[k] = new Carta(j++, "Picas");
+                            break;
+                        case "Diamantes":
+                            cartas[k] = new Carta(j++, "Diamantes");
+                            break;
+                    }
+                }
+            }
+            k++;
+        }while(k > MAX_BARAJA);
+    }
 }

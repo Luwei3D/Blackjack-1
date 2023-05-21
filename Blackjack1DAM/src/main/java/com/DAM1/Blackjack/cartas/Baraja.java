@@ -12,18 +12,18 @@ public class Baraja {
 
     private void anyadirCartas() {
         int k = 0;
-        String[] tipoCartas = {"Corazones","Treboles","Picas","Diamantes"};
+        String[] tipoCartas = {"Corazones", "Treboles", "Picas", "Diamantes"};
         do {
             for (int i = 0; i < tipoCartas.length; i++) {
                 for (int j = 0; j < MAX_CARTAS; j++) {
-                    switch(tipoCartas[i]) {
-                        case "Corazones": 
+                    switch (tipoCartas[i]) {
+                        case "Corazones":
                             cartas[k] = new Carta(j++, "Corazones");
                             break;
                         case "Treboles":
                             cartas[k] = new Carta(j++, "Treboles");
                             break;
-                        case "Picas": 
+                        case "Picas":
                             cartas[k] = new Carta(j++, "Picas");
                             break;
                         case "Diamantes":
@@ -33,6 +33,10 @@ public class Baraja {
                 }
             }
             k++;
-        }while(k > MAX_BARAJA);
+        } while (k > MAX_BARAJA);
+    }
+
+    public Carta[] getCartas() {
+        return cartas;
     }
 }

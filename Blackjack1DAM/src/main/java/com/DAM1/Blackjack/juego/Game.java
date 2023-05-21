@@ -1,6 +1,7 @@
 package com.DAM1.Blackjack.juego;
 
 import com.DAM1.Blackjack.cartas.Baraja;
+import com.DAM1.Blackjack.cartas.Mazo;
 import com.DAM1.Blackjack.participantes.Participante;
 import com.DAM1.Blackjack.participantes.cpu.Banco;
 
@@ -21,7 +22,11 @@ public class Game {
                 break;
             }
         }
-        //Control de rondas
+
+        Mazo mazo = new Mazo(baraja);
+        for (Participante p: participantes){
+
+        }
     }
 
     private String getParticipantes() {

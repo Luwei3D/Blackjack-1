@@ -33,6 +33,6 @@ public class Baraja {
                 }
             }
             k++;
-        }while(k > MAX_BARAJA);
+        }while(k < MAX_BARAJA);
     }
 }

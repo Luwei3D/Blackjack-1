@@ -21,7 +21,6 @@ public class Game {
                 break;
             }
         }
-        //Control de rondas
     }
 
     private String getParticipantes() {

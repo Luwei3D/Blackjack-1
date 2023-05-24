@@ -2,7 +2,6 @@ package com.DAM1.Blackjack.juego;
 
 import com.DAM1.Blackjack.cartas.Baraja;
 import com.DAM1.Blackjack.participantes.Participante;
-import com.DAM1.Blackjack.participantes.cpu.Banco;
 
 public class Game {
     private final Participante[] participantes;
@@ -15,12 +14,6 @@ public class Game {
         pause();
         System.out.println(this.getParticipantes());
         Baraja baraja = new Baraja();
-        for (Participante p: participantes) {
-            if (p instanceof Banco) {
-                Participante banco = new Banco(p.getNombre());
-                break;
-            }
-        }
     }
 
     private String getParticipantes() {

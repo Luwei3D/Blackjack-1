@@ -10,7 +10,6 @@ public abstract class Participante {
     private int saldo;
     private final ArrayList<Carta> cartas;
     private int sumaCartas;
-
     public Participante(String nombre) {
         this.nombre = nombre;
         saldo = Configuracion.saldoInicial;
@@ -30,12 +29,16 @@ public abstract class Participante {
     }
 
     public void setSumaCartas(int sumaCartas) {
-        this.sumaCartas = sumaCartas;
+        this.sumaCartas += sumaCartas;
     }
 
     public boolean addCarta(Carta c){
         return cartas.add(c);
     }
 
-    public abstract void estrategia(Participante p, Mazo m);
+    public abstract int estrategia(Participante p, Mazo m);
+
+    public int getSumaCartas() {
+        return sumaCartas;
+    }
 }

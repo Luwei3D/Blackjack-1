@@ -11,7 +11,8 @@ import com.DAM1.Blackjack.utils.IO;
 
 public class Game {
 
-    private final Mazo mazo;
+    private Mazo mazo;
+    private Baraja baraja;
     private final Participante[] participantes;
     private Participante victorioso;
     
@@ -21,25 +22,45 @@ public class Game {
         System.out.println("Mostrando participantes...");
         pause();
         System.out.println(this.getParticipantes());
-        Baraja baraja = new Baraja();
         for (Participante p: participantes) {
             if (p instanceof Banco) {
                 Participante banco = new Banco(p.getNombre());
                 break;
             }
         }
+    }
 
+    public void ronda(){
+        baraja = new Baraja();
         mazo = new Mazo(baraja);
 
         for (Participante p: participantes){
             repartoCartas(p);
         }
 
+        Participante[] noVictoriosos = new Participante[participantes.length];
+        int i = 0;
+
         //Se solicita si quiere una nueva carta
         for (Participante p: participantes){
-            p.estrategia(p, mazo);
+            int estrategia = p.estrategia(p, mazo);
+            if (estrategia == 0){
+                System.out.println(p.getNombre() + " HA GANADO!");
+                this.victorioso = p;
+                break;
+            } else if (estrategia == 1) {
+                System.out.println(p.getNombre() + " se ha pasado de 21");
+            } else {
+                noVictoriosos[i] = p;
+                i++;
+            }
         }
 
+        if (noVictoriosos.length != 0){
+            Participante p = Comprobacion.ganador(noVictoriosos);
+            System.out.println(p.getNombre() + " HA GANADO!");
+            this.victorioso = p;
+        }
     }
 
     private String getParticipantes() {

@@ -22,12 +22,7 @@ public class Game {
         System.out.println("Mostrando participantes...");
         pause();
         System.out.println(this.getParticipantes());
-        for (Participante p: participantes) {
-            if (p instanceof Banco) {
-                Participante banco = new Banco(p.getNombre());
-                break;
-            }
-        }
+        ronda();
     }
 
     public void ronda(){
@@ -63,7 +58,7 @@ public class Game {
         }
     }
 
-    private String getParticipantes() {
+    protected String getParticipantes() {
         StringBuilder sb = new StringBuilder();
         for (Participante j: participantes) {
             sb.append(j.toString());
@@ -93,5 +88,9 @@ public class Game {
         }while (cont < 1);
 
         return true;
+    }
+
+    public Participante getVictorioso() {
+        return victorioso;
     }
 }

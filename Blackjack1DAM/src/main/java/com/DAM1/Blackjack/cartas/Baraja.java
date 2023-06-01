@@ -16,19 +16,21 @@ public class Baraja {
         do {
             for (int i = 0; i < tipoCartas.length; i++) {
                 for (int j = 0; j < MAX_CARTAS; j++) {
-                    switch (tipoCartas[i]) {
-                        case "Corazones":
-                            cartas[k] = new Carta(j++, "Corazones");
-                            break;
-                        case "Treboles":
-                            cartas[k] = new Carta(j++, "Treboles");
-                            break;
-                        case "Picas":
-                            cartas[k] = new Carta(j++, "Picas");
-                            break;
-                        case "Diamantes":
-                            cartas[k] = new Carta(j++, "Diamantes");
-                            break;
+                    if (j != 1) {
+                        switch (tipoCartas[i]) {
+                            case "Corazones":
+                                cartas[k] = new Carta(j++, "Corazones");
+                                break;
+                            case "Treboles":
+                                cartas[k] = new Carta(j++, "Treboles");
+                                break;
+                            case "Picas":
+                                cartas[k] = new Carta(j++, "Picas");
+                                break;
+                            case "Diamantes":
+                                cartas[k] = new Carta(j++, "Diamantes");
+                                break;
+                        }
                     }
                 }
             }

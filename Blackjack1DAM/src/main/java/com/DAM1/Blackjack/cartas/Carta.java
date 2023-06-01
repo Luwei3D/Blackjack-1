@@ -25,6 +25,8 @@ public class Carta {
         }
     }
 
-
+    public int getNumCarta() {
+        return numCarta;
+    }
 
 }

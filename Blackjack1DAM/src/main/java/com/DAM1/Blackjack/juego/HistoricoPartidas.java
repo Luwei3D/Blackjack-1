@@ -9,6 +9,9 @@ public class HistoricoPartidas {
     public HistoricoPartidas(ArrayList<Game> historico) {
         this.historico = historico;
     }
+    public boolean anyadirJuego(Game game){
+        return historico.add(game);
+    }
     public String getNumManosGanados(){
         StringBuilder sb = new StringBuilder();
         if(historico.isEmpty()){
@@ -27,7 +30,6 @@ public class HistoricoPartidas {
         }
         return sb.toString();
     }
-
     public String quienHaGanadoMas(){
         StringBuilder sb = new StringBuilder();
         if(historico.isEmpty()){
@@ -68,6 +70,55 @@ public class HistoricoPartidas {
         }
         return sb.toString();
     }
+
+    public String imprimirVictoriasDeParticipanteEspesifico(String nombre){
+        StringBuilder sb = new StringBuilder();
+        int cont = 0;
+        int id = 0;
+        String participante = nombre.toLowerCase();
+        if(historico.isEmpty()){
+            sb.append("El historico esta vacio");
+        }else{
+            switch (participante) {
+                case "jugador":
+                    for (int i = 0; i < historico.size(); i++) {
+                        ++id;
+                        if (historico.get(i).getVictorioso() instanceof Jugador) {
+                            sb.append(id).append(":").append("Ha ganado").append(historico.get(i).getVictorioso()).append(" y los participantes son").append(historico.get(i).getParticipantes());
+                            cont++;
+                        }
+                    }
+                    if (cont == 0)
+                        sb.append("El jugador no tiene victorias");
+                    break;
+                case "bot":
+                    for (int i = 0; i < historico.size(); i++) {
+                        ++id;
+                        if (historico.get(i).getVictorioso() instanceof Bot) {
+                            sb.append(id).append(":").append("Ha ganado").append(historico.get(i).getVictorioso()).append(" y los participantes son").append(historico.get(i).getParticipantes());
+                            cont++;
+                        }
+                    }
+                    if (cont == 0)
+                        sb.append("El bot no tiene victorias");
+                    break;
+                case "banco":
+                    for (int i = 0; i < historico.size(); i++) {
+                        ++id;
+                        if (historico.get(i).getVictorioso() instanceof Banco) {
+                            sb.append(id).append(":").append("Ha ganado").append(historico.get(i).getVictorioso()).append(" y los participantes son").append(historico.get(i).getParticipantes());
+                            cont++;
+                        }
+                    }
+                    if (cont == 0)
+                        sb.append("El banco no tiene victorias");
+                    break;
+                default:
+                    sb.append("El nombre introducido no coincide con ninguno de los participantes");
+            }
+        }
+        return sb.toString();
+    }
     @Override
     public String toString() {
         return "Historico{" +
@@ -75,4 +126,3 @@ public class HistoricoPartidas {
                 '}';
     }
 }
-

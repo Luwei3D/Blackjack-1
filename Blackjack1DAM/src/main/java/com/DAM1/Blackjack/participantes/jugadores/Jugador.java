@@ -27,7 +27,8 @@ public class Jugador extends Participante {
                 if (respuesta.equals("S")){
                     Carta carta = m.sacarCarta();
                     System.out.println(carta.print());
-                    p.addCarta(m.sacarCarta());
+                    carta.print();
+                    p.addCarta(carta);
                     situacion = Comprobacion.carta(p);
                     switch (situacion){
                         case BLACKJACK:

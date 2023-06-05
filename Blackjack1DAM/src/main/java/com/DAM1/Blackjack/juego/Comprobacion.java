@@ -32,7 +32,6 @@ public class Comprobacion {
     }
 
     public static Participante ganador(ArrayList<Participante> participantes){
-
         int valor = Integer.MIN_VALUE;
         int posGanador = 0;
         for (int i = 0; i < participantes.size(); i++){

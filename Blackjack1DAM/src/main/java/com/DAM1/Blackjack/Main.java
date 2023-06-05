@@ -6,6 +6,7 @@ import com.DAM1.Blackjack.participantes.Participante;
 import com.DAM1.Blackjack.participantes.cpu.Banco;
 import com.DAM1.Blackjack.participantes.jugadores.Jugador;
 import com.DAM1.Blackjack.utils.IO;
+import com.DAM1.Blackjack.participantes.cpu.Bot;
 
 import java.util.Scanner;
 /**
@@ -21,7 +22,7 @@ public class Main {
     private static HistoricoPartidas historicoPartidas;
     public static void main(String[] args) {
         configuracion = new Configuracion();
-
+        historicoPartidas = new HistoricoPartidas();
 
 
         Scanner scanner = new Scanner(System.in);
@@ -73,14 +74,31 @@ public class Main {
      */
 
     private static void nuevaPartida() {
-
+        boolean continuar;
+        int numBots = IO.readNumber("¿Cuantos bots quieres?", 0,Configuracion.getCantidad()-1);
         jugadores= new Participante[Configuracion.getCantidad()];
         for (int i = 0 ; i < Configuracion.getCantidad()-1 ; i++) {
-            jugadores[i]=new Jugador(IO.readMessage("escribe el nombre del jugador " + i + " : ",1));
+            int l = i+1;
+            if (i <= (Configuracion.getCantidad()-1)-numBots) {
+                jugadores[i]=new Jugador(IO.readMessage("escribe el nombre del jugador " + l + " : ",1));
+            } else {
+                jugadores[i]=new Bot("Bot " + l);
+            }
         }
         Banco banco =new Banco("Cruppier");
         jugadores[Configuracion.getCantidad()-1] = banco;
-        game = new Game(jugadores);
+        do {
+            game = new Game(jugadores);
+            historicoPartidas.anyadirJuego(game);
+            continuar = false;
+            char cont = IO.readChar("Quieres continuar?(Y/N)", 0);
+            if (cont == 'Y') {
+                continuar = true;
+                for (Participante p: jugadores) {
+                    p.resetearCartas();
+                }
+            }
+        }while(continuar);
     }
 
     /**

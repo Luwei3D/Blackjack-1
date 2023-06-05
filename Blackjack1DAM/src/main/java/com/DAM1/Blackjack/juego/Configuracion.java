@@ -1,10 +1,9 @@
 package com.DAM1.Blackjack.juego;
 
-import com.DAM1.Blackjack.utils.IO;
 
 public class Configuracion {
     private static int saldoInicial = 15;
-    private static int apuestaBase;
+    private static int apuestaBase = 5;
 
     private static int cantidad = 5;
     private static int saldoBanca =2 * apuestaBase * cantidad;
@@ -15,6 +14,10 @@ public class Configuracion {
 
     public static int getCantidad() {
         return cantidad;
+    }
+
+    public static int getApuestaBase() {
+        return apuestaBase;
     }
 
 

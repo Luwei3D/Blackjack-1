@@ -44,6 +44,10 @@ public abstract class Participante {
         return sumaCartas;
     }
 
+    public void resetearCartas() {
+        cartas.clear();
+    }
+
     @Override
     public String toString() {
         return "( nombre=" + nombre + ", saldo=" + saldo + " )";
@@ -61,4 +65,6 @@ public abstract class Participante {
     public void restarSalario(int cant) {
         this.saldo -= cant;
     }
+
+    
 }

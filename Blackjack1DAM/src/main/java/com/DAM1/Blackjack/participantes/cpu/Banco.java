@@ -5,7 +5,7 @@ import com.DAM1.Blackjack.juego.Comprobacion;
 import com.DAM1.Blackjack.juego.Situacion;
 import com.DAM1.Blackjack.juego.TipoCPU;
 import com.DAM1.Blackjack.participantes.Participante;
-
+import com.DAM1.Blackjack.cartas.Carta;
 import java.util.Random;
 
 public class Banco extends Participante{
@@ -28,7 +28,9 @@ public class Banco extends Participante{
                 break;
         };
     }
-
+    /**
+     * Método de interfaz la cual depende del bot 
+     */
     @Override
     public int estrategia(Participante p, Mazo m) {
         int i = p.getSumaCartas();
@@ -55,19 +57,28 @@ public class Banco extends Participante{
         }
         return -1;
     }
-
+    /**
+     * Se realiza la jugada de cojer una carta y depende del tipo de bot que hayamos creado cojeremos hasta un cierto límite
+     * @param p
+     * @param m
+     * @param limite
+     * @return
+     */
     private Situacion jugada(Participante p, Mazo m, int limite){
         Situacion situacion;
         do {
-            p.addCarta(m.sacarCarta());
+            Carta carta = m.sacarCarta();
+            p.addCarta(carta);
+            p.setSumaCartas(carta.getNumCarta());
             situacion = Comprobacion.carta(p);
             switch (situacion){
                 case BLACKJACK:
                     return Situacion.BLACKJACK;
                 case MAS_LIMITE:
                     return Situacion.MAS_LIMITE;
+                default:
+                    break;
             }
-
         }while (p.getSumaCartas() <= limite);
         return Situacion.MENOS_LIMITE;
     }

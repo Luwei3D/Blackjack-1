@@ -6,8 +6,8 @@ import com.DAM1.Blackjack.participantes.jugadores.Jugador;
 import java.util.ArrayList;
 public class HistoricoPartidas {
    private final ArrayList<Game> historico;
-    public HistoricoPartidas(ArrayList<Game> historico) {
-        this.historico = historico;
+    public HistoricoPartidas() {
+        this.historico = new ArrayList<>();
     }
     public boolean anyadirJuego(Game game){
         return historico.add(game);

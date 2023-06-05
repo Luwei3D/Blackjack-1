@@ -3,12 +3,9 @@ package com.DAM1.Blackjack.cartas;
 import java.util.Random;
 
 public class Mazo {
-
-
-
     private final Carta[] mazo;
     private int cont;
-    private static final Random RANDOM = new Random();
+   
 
     public Mazo(Baraja baraja) {
         this.mazo = crearMazo(baraja);
@@ -16,11 +13,11 @@ public class Mazo {
     }
 
     private Carta[] crearMazo(Baraja baraja){
-
+        Random random = new Random();
         Carta[] cartas = baraja.getCartas();
         int longCartas = cartas.length-1;
         for (int i = 0; i < cartas.length; i++){
-            int pos = RANDOM.nextInt(cartas.length + 1);
+            int pos = random.nextInt(cartas.length + 1);
             mezcla(cartas, pos, longCartas);
             longCartas--;
         }
@@ -35,12 +32,11 @@ public class Mazo {
     }
 
     public Carta sacarCarta(){
-
-        int pos = RANDOM.nextInt(cont+1);
+        Random random = new Random();
+        int pos = random.nextInt(cont+1);
         Carta value = mazo[pos];
         change(mazo, pos, cont);
         cont--;
-
         return value;
     }
 

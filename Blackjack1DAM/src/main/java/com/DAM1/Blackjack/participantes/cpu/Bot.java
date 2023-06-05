@@ -19,7 +19,15 @@ public class Bot extends Participante{
 
     public Bot(String nombre) {
         super(nombre);
-        tipoCPU.tipoCPU(random.nextInt(1 + 1));
+        int i = random.nextInt(1-0+1)+0;
+        switch(i) {
+            case 0:
+                this.tipoCPU = TipoCPU.AGRESIVO;
+                break; 
+            case 1: 
+                this.tipoCPU = TipoCPU.PASIVO;
+                break;
+        };
     }
 
     @Override

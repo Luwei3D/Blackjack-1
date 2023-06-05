@@ -7,7 +7,7 @@ public class Configuracion {
     private static int apuestaBase;
 
     private static int cantidad = 5;
-    private static int saldoBanca =15;
+    private static int saldoBanca =2 * apuestaBase * cantidad;
 
     public static int getSaldoInicial() {
         return saldoInicial;

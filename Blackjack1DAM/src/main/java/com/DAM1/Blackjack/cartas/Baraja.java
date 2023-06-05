@@ -15,26 +15,28 @@ public class Baraja {
         String[] tipoCartas = {"Corazones", "Treboles", "Picas", "Diamantes"};
         do {
             for (int i = 0; i < tipoCartas.length; i++) {
+                int l = 0;
                 for (int j = 0; j < MAX_CARTAS; j++) {
+                    l = j+1;
                     if (j != 1) {
                         switch (tipoCartas[i]) {
                             case "Corazones":
-                                cartas[k] = new Carta(j++, "Corazones");
+                                cartas[k] = new Carta(l, "Corazones");
                                 break;
                             case "Treboles":
-                                cartas[k] = new Carta(j++, "Treboles");
+                                cartas[k] = new Carta(l, "Treboles");
                                 break;
                             case "Picas":
-                                cartas[k] = new Carta(j++, "Picas");
+                                cartas[k] = new Carta(l, "Picas");
                                 break;
                             case "Diamantes":
-                                cartas[k] = new Carta(j++, "Diamantes");
+                                cartas[k] = new Carta(l, "Diamantes");
                                 break;
                         }
+                        k++;
                     }
                 }
             }
-            k++;
         } while (k > MAX_BARAJA);
     }
 

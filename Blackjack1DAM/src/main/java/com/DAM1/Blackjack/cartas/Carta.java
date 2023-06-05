@@ -6,9 +6,17 @@ public class Carta {
     }
     private int numCarta;
     private TipoCarta tipo; 
+    private int valorCarta;
 
     public Carta(int numCarta, String tipoCarta) {
         this.numCarta = numCarta;
+        if (numCarta > 10) {
+            this.valorCarta = 10;
+        } else if(numCarta == 1) {
+            this.valorCarta = 11;
+        } else {
+            this.valorCarta = numCarta;
+        }
         switch(tipoCarta) {
             case "Corazones":
                 this.tipo = TipoCarta.CORAZONES;

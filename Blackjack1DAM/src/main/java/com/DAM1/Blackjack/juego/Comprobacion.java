@@ -1,5 +1,7 @@
 package com.DAM1.Blackjack.juego;
 
+import java.util.ArrayList;
+
 import com.DAM1.Blackjack.participantes.Participante;
 import com.DAM1.Blackjack.participantes.cpu.Bot;
 import com.DAM1.Blackjack.participantes.jugadores.Jugador;
@@ -29,16 +31,16 @@ public class Comprobacion {
         return Situacion.BLACKJACK;
     }
 
-    public static Participante ganador(Participante[] participantes){
+    public static Participante ganador(ArrayList<Participante> participantes){
 
         int valor = Integer.MIN_VALUE;
         int posGanador = 0;
-        for (int i = 0; i < participantes.length; i++){
-            if (participantes[i].getSumaCartas() > valor){
+        for (int i = 0; i < participantes.size(); i++){
+            if (participantes.get(i).getSumaCartas() > valor){
                 posGanador = i;
-                valor = participantes[i].getSumaCartas();
+                valor = participantes.get(i).getSumaCartas();
             }
         }
-        return participantes[posGanador];
+        return participantes.get(posGanador);
     }
 }

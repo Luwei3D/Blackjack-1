@@ -7,13 +7,14 @@ import java.util.ArrayList;
 
 public abstract class Participante {
     private final String nombre;
-    private int saldo;
+    private double saldo;
     private final ArrayList<Carta> cartas;
     private int sumaCartas;
     public Participante(String nombre) {
         this.nombre = nombre;
         saldo = Configuracion.getSaldoInicial();
         this.cartas = new ArrayList<>();
+        this.sumaCartas = 0;
     }
 
     public boolean anyadirCarta(Carta carta){
@@ -24,7 +25,7 @@ public abstract class Participante {
         return nombre;
     }
 
-    public int getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
@@ -33,6 +34,7 @@ public abstract class Participante {
     }
 
     public boolean addCarta(Carta c){
+        this.setSumaCartas(c.getValorCarta());
         return cartas.add(c);
     }
 
@@ -40,5 +42,23 @@ public abstract class Participante {
 
     public int getSumaCartas() {
         return sumaCartas;
+    }
+
+    @Override
+    public String toString() {
+        return "( nombre=" + nombre + ", saldo=" + saldo + " )";
+    }
+
+    public void getCartas() {
+        for (Carta c: cartas) {
+            System.out.println(c.print());
+        }
+    }
+
+    public void setSalario(double cant) {
+        this.saldo = cant;
+    }
+    public void restarSalario(int cant) {
+        this.saldo -= cant;
     }
 }

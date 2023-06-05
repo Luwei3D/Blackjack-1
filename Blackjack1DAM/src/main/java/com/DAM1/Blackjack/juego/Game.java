@@ -8,7 +8,7 @@ import com.DAM1.Blackjack.participantes.cpu.Banco;
 import com.DAM1.Blackjack.participantes.cpu.Bot;
 import com.DAM1.Blackjack.participantes.jugadores.Jugador;
 import com.DAM1.Blackjack.utils.IO;
-
+import java.util.ArrayList;
 public class Game {
 
     private Mazo mazo;
@@ -33,8 +33,7 @@ public class Game {
             repartoCartas(p);
         }
 
-        Participante[] noVictoriosos = new Participante[participantes.length];
-        int i = 0;
+        ArrayList<Participante> noVictoriosos = new ArrayList<>(participantes.length); 
 
         //Se solicita si quiere una nueva carta
         for (Participante p: participantes){
@@ -46,12 +45,11 @@ public class Game {
             } else if (estrategia == 1) {
                 System.out.println(p.getNombre() + " se ha pasado de 21");
             } else {
-                noVictoriosos[i] = p;
-                i++;
+                noVictoriosos.add(p);
             }
         }
 
-        if (noVictoriosos.length != 0){
+        if (this.victorioso == null){
             Participante p = Comprobacion.ganador(noVictoriosos);
             System.out.println(p.getNombre() + " HA GANADO!");
             this.victorioso = p;

@@ -13,7 +13,12 @@ public class Game {
     private Baraja baraja;
     private final Participante[] participantes;
     private Participante victorioso;
-    
+
+    /**
+     * Inicializacion del juego que recibe un array de participantes
+     * Se crea la baraja y se guardan los participantes
+     * @param participantes que se recibe del main
+     */
     public Game(Participante[] participantes) {
         //Control de la creación de los jugadores
         this.participantes = participantes;
@@ -21,7 +26,8 @@ public class Game {
         ronda();
     }
     /**
-     * Esto ejecuta una ronda
+     * Esto ejecuta una ronda. Por aqui repartend las cartas a cada participante
+     * desde el mazo y muestra informacion sobre el estado de la ronda
      */
     private void ronda(){
         System.out.println("Mostrando participantes...");
@@ -73,7 +79,11 @@ public class Game {
         }
         return sb.toString();
     }
-    
+
+    /**
+     * Un metodo para que la programa corre poco mas lento,
+     * para que sea mas parecida al mundo real
+     */
     private static void pause() {
         try {
             Thread.sleep(2000);

@@ -1,18 +1,25 @@
 package com.DAM1.Blackjack.cartas;
-
 public class Carta {
     private enum TipoCarta {
         CORAZONES,DIAMANTES,PICAS,TREBOLES;
     }
-    private int numCarta;
-    private TipoCarta tipo; 
+    private final int numCarta;
+    private TipoCarta tipo;
+    private int valorCarta;
 
     public Carta(int numCarta, String tipoCarta) {
         this.numCarta = numCarta;
+        if (numCarta > 10) {
+            this.valorCarta = 10;
+        } else if(numCarta == 1) {
+            this.valorCarta = 11;
+        } else {
+            this.valorCarta = numCarta;
+        }
         switch(tipoCarta) {
             case "Corazones":
                 this.tipo = TipoCarta.CORAZONES;
-                break; 
+                break;
             case "Treboles":
                 this.tipo = TipoCarta.TREBOLES;
                 break;
@@ -27,6 +34,23 @@ public class Carta {
 
     public int getNumCarta() {
         return numCarta;
+    }
+    public String print() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("┌──────────────").append("\n")
+                .append("│"+this.numCarta+"             │").append("\n")
+                .append("│              │").append("\n")
+                .append("│              │").append("\n")
+                .append("│   "+ this.tipo+"    ").append("\n")
+                .append("│              │").append("\n")
+                .append("│              │").append("\n")
+                .append("│            "+this.numCarta +"").append("\n")
+                .append("└──────────────┘").append("\n");
+        return sb.toString();
+    }
+
+    public int getValorCarta() {
+        return valorCarta;
     }
 
 }

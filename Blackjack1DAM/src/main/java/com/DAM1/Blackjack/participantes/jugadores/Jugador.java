@@ -27,7 +27,6 @@ public class Jugador extends Participante {
                 if (respuesta.equals("S")){
                     Carta carta = m.sacarCarta();
                     System.out.println(carta.print());
-                    carta.print();
                     p.addCarta(m.sacarCarta());
                     situacion = Comprobacion.carta(p);
                     switch (situacion){

@@ -8,7 +8,9 @@ import com.DAM1.Blackjack.participantes.jugadores.Jugador;
 import com.DAM1.Blackjack.utils.IO;
 
 import java.util.Scanner;
-
+/**
+ * La clase `Main` es la clase principal que contiene el método `main` y controla la ejecución del juego de Blackjack.
+ */
 public class Main {
     private static int saldoBanca;
     private static int saldoJugador;
@@ -51,6 +53,9 @@ public class Main {
     }
 
 
+    /**
+     * Muestra el menú principal del juego.
+     */
 
     private static void mostrarMenuPrincipal() {
         System.out.println("***********************");
@@ -63,6 +68,10 @@ public class Main {
         System.out.print("Elige una opción: ");
     }
 
+    /**
+     * Inicia una nueva partida del juego.
+     */
+
     private static void nuevaPartida() {
 
         jugadores= new Participante[Configuracion.getCantidad()];
@@ -74,9 +83,17 @@ public class Main {
         game = new Game(jugadores);
     }
 
+    /**
+     * Muestra las estadísticas del juego.
+     */
     private static void mostrarEstadisticas() {
         System.out.println(historicoPartidas.getNumManosGanados());
     }
+    /**
+     * Muestra el menú de configuración del juego.
+     *
+     * @param scanner Objeto `Scanner` utilizado para leer la entrada del usuario.
+     */
 
     private static void mostrarMenuConfiguracion(Scanner scanner) {
         int opcion;
@@ -113,29 +130,39 @@ public class Main {
         } while (opcion != 0);
     }
 
+    /**
+     * Cambia el número de jugadores.
+     */
+
     private static void cambiarNumeroJugadores() {
 
         int numJugadores = IO.readNumber("Cuantos Jugadores quieres: ",1);
         configuracion.setCantJugador(numJugadores);
-        // Realizar la lógica para cambiar el número de jugadores
-    }
 
+    }
+    /**
+     * Cambia la apuesta base.
+     */
     private static void cambiarApuestaBase() {
         int nuevaApuesta = IO.readNumber("Ingrese la nueva apuesta base de los jugadores: ",1);
         configuracion.setApuestaBase(nuevaApuesta);
-        // Realizar la lógica para cambiar la apuesta base
     }
+    /**
+     * Cambia el saldo inicial de los jugadores.
+     */
 
     private static void cambiarSaldoInicialJugadores() {
         int nuevoSaldoJugadores = IO.readNumber("Ingrese el nuevo saldo inicial de los jugadores: ",1);
         configuracion.setSaldoInicial(nuevoSaldoJugadores);
-        // Realizar la lógica para cambiar el saldo inicial de los jugadores
+
     }
+    /**
+     * Cambia el saldo inicial de la banca.
+     */
 
     private static void cambiarSaldoInicialBanca() {
         int nuevoSaldoBanca = IO.readNumber("Ingrese el nuevo saldo inicial de los jugadores: ",1);
         configuracion.setSaldoBanca(nuevoSaldoBanca);
 
-        // Realizar la lógica para cambiar el saldo inicial de la banca
     }
 }

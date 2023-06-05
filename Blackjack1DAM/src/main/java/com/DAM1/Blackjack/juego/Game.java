@@ -25,7 +25,7 @@ public class Game {
         ronda();
     }
 
-    public void ronda(){
+    private void ronda(){
         baraja = new Baraja();
         mazo = new Mazo(baraja);
 

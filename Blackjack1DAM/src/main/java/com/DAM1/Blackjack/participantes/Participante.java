@@ -12,7 +12,7 @@ public abstract class Participante {
     private int sumaCartas;
     public Participante(String nombre) {
         this.nombre = nombre;
-        saldo = Configuracion.saldoInicial;
+        saldo = Configuracion.getSaldoInicial();
         this.cartas = new ArrayList<>();
     }
 

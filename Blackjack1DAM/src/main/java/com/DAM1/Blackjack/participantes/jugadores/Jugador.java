@@ -25,6 +25,8 @@ public class Jugador extends Participante {
                 char c = IO.readChar("Quieres nueva carta? (S/N) ", 1);
                 respuesta = Character.toString(c).toUpperCase();
                 if (respuesta.equals("S")){
+                    Carta carta = m.sacarCarta();
+                    System.out.println(carta.print());
                     p.addCarta(m.sacarCarta());
                     situacion = Comprobacion.carta(p);
                     switch (situacion){

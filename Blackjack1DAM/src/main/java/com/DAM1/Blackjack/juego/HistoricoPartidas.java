@@ -6,6 +6,10 @@ import com.DAM1.Blackjack.participantes.jugadores.Jugador;
 import java.util.ArrayList;
 public class HistoricoPartidas {
    private final ArrayList<Game> historico;
+
+    /**
+     * Creacion de arrayList vacio
+     */
     public HistoricoPartidas() {
         this.historico = new ArrayList<>();
     }

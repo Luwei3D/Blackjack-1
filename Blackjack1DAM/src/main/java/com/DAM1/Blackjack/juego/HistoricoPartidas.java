@@ -6,12 +6,31 @@ import com.DAM1.Blackjack.participantes.jugadores.Jugador;
 import java.util.ArrayList;
 public class HistoricoPartidas {
    private final ArrayList<Game> historico;
+
+    /**
+     * Creacion de arrayList vacio
+     */
     public HistoricoPartidas() {
         this.historico = new ArrayList<>();
     }
+    /**
+     * Un booleano para anyadir nuevos 'juegos' o mejor
+     * dicho partidas al arraylist
+     * @param game que representa el juego vamos a anyadir
+     * @return que anyade el juego
+     */
     public boolean anyadirJuego(Game game){
         return historico.add(game);
     }
+    /**
+     * Este metodo muestro el numero de manos ganados que tiene el jugador y el cpu.
+     * Hay 2 contadores que representan los manos ganados del cpu y jugador.
+     * Un Stringbuiler que va a contener el resultado
+     * Tambien en caso que el historico esta vaccio  va a aparecer el mensaje de que esta vaccio
+     * Consiste en iterar el arraylist is usar instance of para determinar quien ha ganado y
+     * aumentar el contador.
+     * @return Devuelve el string con manos ganados o con mensaje de que esta vaccio el historico
+     */
     public String getNumManosGanados(){
         StringBuilder sb = new StringBuilder();
         if(historico.isEmpty()){
@@ -30,6 +49,13 @@ public class HistoricoPartidas {
         }
         return sb.toString();
     }
+    /**
+     * Este metodo muestra el participante con mas victorias usando un contador para cada tipo de participante
+     * Usamos if para comprobar si el historico esta vaccio y en caso que hay partido dentro el arraylist
+     * iteramos y usamos cominacion de if y instance of para determinar la cantidad de victorias de un participante.
+     * Desoues del bucle usamos condicionales para deteminar quien ha ganado mas
+     * @return Devuelve un string diciendo quien ha ganado mas
+     */
     public String quienHaGanadoMas(){
         StringBuilder sb = new StringBuilder();
         if(historico.isEmpty()){
@@ -56,6 +82,10 @@ public class HistoricoPartidas {
         }
         return  sb.toString();
     }
+    /**
+     * Metodo para mostrar todas las partidas
+     * @return devuelve un string con todas partidas
+     */
     public String mostrarTodasPartidas(){
         StringBuilder sb = new StringBuilder();
         int id = 0;
@@ -70,7 +100,14 @@ public class HistoricoPartidas {
         }
         return sb.toString();
     }
-
+    /**
+     * Un metodo para imprimir las partidas ganadas de un participante especifico
+     * El metodo recibe un string y despue usamos el switch para separar los participantes,
+     * antes usamos un toLowerCase para poner las letras a minuscula,
+     * en caso que el nombre no coincide sale mensaje de que este participante no existe
+     * @param nombre de qparticipante cual qiures ver las victorias
+     * @return el string con victorias o mensaje de error
+     */
     public String imprimirVictoriasDeParticipanteEspesifico(String nombre){
         StringBuilder sb = new StringBuilder();
         int cont = 0;
@@ -119,6 +156,10 @@ public class HistoricoPartidas {
         }
         return sb.toString();
     }
+    /**
+     * El metodo de imprimir
+     * @return una string
+     */
     @Override
     public String toString() {
         return "Historico{" +

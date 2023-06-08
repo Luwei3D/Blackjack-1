@@ -36,8 +36,7 @@ public class Main {
                     nuevaPartida();
                     break;
                 case 2:
-                    mostrarEstadisticas();
-
+                    mostrarMenuDeEstadisticas(scanner);
                     break;
                 case 3:
                     mostrarMenuConfiguracion(scanner);
@@ -107,6 +106,12 @@ public class Main {
     private static void mostrarEstadisticas() {
         System.out.println(historicoPartidas.getNumManosGanados());
     }
+    private static void mostrarTodasPartidas() {
+        System.out.println(historicoPartidas.mostrarTodasPartidas());
+    }
+    private static void mostrarParticipanteConMasVictorias() {
+        System.out.println(historicoPartidas.quienHaGanadoMas());
+    }
     /**
      * Muestra el menú de configuración del juego.
      *
@@ -138,6 +143,48 @@ public class Main {
                     break;
                 case 4:
                     cambiarSaldoInicialBanca();
+                    break;
+                case 0:
+                    System.out.println("Volviendo al menú principal...");
+                    break;
+                default:
+                    System.out.println("Opción inválida. Por favor, elige una opción válida.");
+            }
+        } while (opcion != 0);
+    }
+
+    /**
+     * Menu para diferentes estadistica
+     * @param scanner
+     */
+    private static void mostrarMenuDeEstadisticas(Scanner scanner) {
+        int opcion;
+        String name;
+        do {
+            System.out.println("***********************");
+            System.out.println("*** Estadisticas ****");
+            System.out.println("***********************");
+            System.out.println("1. Mostrar numero de manos ganados");
+            System.out.println("2. Mostrar todas las partidas");
+            System.out.println("3. Mostrar el participante con mas vicorias");
+            System.out.println("4. Mostar victorias de un participante especifico");
+            System.out.println("0. Volver al menú principal");
+            System.out.print("Elige una opción: ");
+            opcion = scanner.nextInt();
+            name = scanner.nextLine();
+            switch (opcion) {
+                case 1:
+                    mostrarEstadisticas();
+                    break;
+                case 2:
+                    mostrarTodasPartidas();
+                    break;
+                case 3:
+                    mostrarParticipanteConMasVictorias();
+                    break;
+                case 4:
+
+                    System.out.println("De momento esta opción no esta disponible");;
                     break;
                 case 0:
                     System.out.println("Volviendo al menú principal...");

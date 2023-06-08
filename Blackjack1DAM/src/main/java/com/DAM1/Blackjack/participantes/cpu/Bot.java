@@ -30,6 +30,13 @@ public class Bot extends Participante{
         };
     }
 
+    /**
+     * Hereda de participante su metodo estrategia, que dependiendo si es una CPU agresiva intentará llegar mas lejos,
+     * en cambio si se trata de uno pasivo, se plantará antes.
+     * @param p Se le pasa los participantes para saber la puntuacion de sus cartas
+     * @param m y el mazo para poder pasarselo cuando se llame al metodo jugada
+     * @return devuelve 0 en caso de blackjack, -1 en caso de que se plante o 1 en caso de que se pase.
+     */
     @Override
     public int estrategia(Participante p, Mazo m) {
         int i = p.getSumaCartas();
@@ -57,6 +64,14 @@ public class Bot extends Participante{
         return -1;
     }
 
+    /**
+     * A través de un bucle va sacando cartas y anyadiendola al array de participantes. Luego comprueba dentro de
+     * un swithc la situacion, si es jugada ganadora, se ha pasado o no ha llegado.
+     * @param p se le pasan los participantes sobre los que itera
+     * @param m el mazo donde va sacando cartas
+     * @param limite y el limite de cartas
+     * @return devuelve el tipo de situacion dependiendo
+     */
     private Situacion jugada(Participante p, Mazo m, int limite){
         Situacion situacion;
         do {

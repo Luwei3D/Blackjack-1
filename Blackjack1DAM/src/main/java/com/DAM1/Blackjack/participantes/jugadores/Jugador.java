@@ -17,6 +17,13 @@ public class Jugador extends Participante {
         super(nombre);
     }
 
+    /**
+     * Estrategia que hereda de Participante y aplica la estrategia para el Jugador. Solicita si quiere nuevas cartas,
+     * en caso afirmativo, la anyade, la enseya y comprueba su situación para ver si se ha pasado o ha hecho blackjack
+     * @param p Participantes sobre los que se actuará
+     * @param m mazo de donde se sacarán todas las cartas
+     * @return
+     */
     @Override
     public int estrategia(Participante p, Mazo m) {
             String respuesta;

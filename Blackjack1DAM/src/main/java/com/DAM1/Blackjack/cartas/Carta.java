@@ -1,12 +1,21 @@
 package com.DAM1.Blackjack.cartas;
 
 public class Carta {
+    /**
+     * La clase `Carta` representa una carta de un mazo de cartas en el juego de Blackjack.
+     */
     private enum TipoCarta {
         CORAZONES,DIAMANTES,PICAS,TREBOLES;
     }
     private final int numCarta;
     private TipoCarta tipo;
-    private int valorCarta;  
+    private int valorCarta;
+    /**
+     * Constructor de la clase `Carta`.
+     *
+     * @param numCarta   Número de la carta.
+     * @param tipoCarta  Tipo de la carta (Corazones, Diamantes, Picas, Treboles).
+     */
 
     public Carta(int numCarta, String tipoCarta) {
         this.numCarta = numCarta;
@@ -32,24 +41,38 @@ public class Carta {
                 break;
         }
     }
+    /**
+     * Obtiene el número de la carta.
+     *
+     * @return Número de la carta.
+     */
 
     public int getNumCarta() {
         return numCarta;
     }
+    /**
+     * Genera una representación visual de la carta.
+     *
+     * @return Representación visual de la carta.
+     */
     public String print() {
         StringBuilder sb = new StringBuilder();
-        sb.append("┌─────────────── ").append("\n")
-                .append("│").append(this.numCarta).append('\t').append('\t').append('\t').append('\t').append("│").append("\n")
-                .append("│").append('\t').append('\t').append('\t').append('\t').append("│").append("\n")
-                .append("│").append('\t').append('\t').append('\t').append('\t').append("│").append("\n")
-                .append("│").append('\t').append(this.tipo).append("   │").append("\n")
-                .append("│").append('\t').append('\t').append('\t').append('\t').append("│").append("\n")
-                .append("│").append('\t').append('\t').append('\t').append('\t').append("│").append("\n")
-                .append("│").append('\t').append('\t').append('\t').append(this.numCarta).append("   │").append("\n")
-                .append("└───────────────┘").append("\n");
+        sb.append("┌──────────────").append("\n")
+                .append("│"+this.numCarta+"             │").append("\n")
+                .append("│              │").append("\n")
+                .append("│              │").append("\n")
+                .append("│   "+ this.tipo+"    ").append("\n")
+                .append("│              │").append("\n")
+                .append("│              │").append("\n")
+                .append("│            "+this.numCarta +"").append("\n")
+                .append("└──────────────┘").append("\n");
         return sb.toString();
     }
-
+    /**
+     * Obtiene el valor numérico de la carta.
+     *
+     * @return Valor numérico de la carta.
+     */
     public int getValorCarta() {
         return valorCarta;
     }
